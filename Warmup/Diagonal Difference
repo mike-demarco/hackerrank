@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    
+    public static int diffdiag(int[][] matrix) {
+        int diag1 = 0;
+        int diag2 = 0;
+        int difference = 0;
+        int n = matrix[0].length;
+        for(int i = 0; i < n; i++) {
+            int j = i;
+            diag1 += matrix[i][j];
+            diag2 += matrix[i][(n-1)-j];
+        }
+        difference = Math.abs(diag1-diag2);
+        return difference;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int diff = 0;
+        int[][] matrix = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = in.nextInt();
+            }
+        }
+        diff = diffdiag(matrix);
+        System.out.println(diff);
+    }
+}
